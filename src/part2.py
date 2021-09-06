@@ -2,16 +2,19 @@ from math import pi, sqrt
 
 # Your exercises should appear in this file.
 
-
 def oppervlakte_kegel(r, h):
+
     # Zoek via Google naar "area cone"
-    # l = vierkantswortel(r^2 + h^2)
-    # A = π * r * l + π * r^2
-    return 0
+    l = sqrt(r**2 + h**2)
+    A = pi * r * l + pi * r**2
+
+    return A
 
 
 def last_element(l):
+
     """Return het laatste element uit een lijst"""
+
     return 0
 
 
