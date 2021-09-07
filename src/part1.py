@@ -94,5 +94,13 @@ def oneven_getallen(x):
 
     """Return een lijst met de eerste 'x' oneven getallen."""
 
-
-    return []
+    list = []
+    sum = 0
+    if x == 0:
+        return []
+    for i in range(1, 100000000000000000, 2):
+        list.append(i)
+        sum = sum + 1
+        if sum == x:
+            break
+    return list

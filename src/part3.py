@@ -2,8 +2,12 @@
 
 
 def list_search(l, value):
+
     """Return the index of the value in the list"""
-    return 0
+
+    value = []
+    resultaat = l.index(value)
+    return resultaat
 
 
 def phonebook_search(phonebook, search_name):
