@@ -55,13 +55,23 @@ def squared_list(l):
     squared_list([2,3]) == [4, 9]
     """
 
-    return []
+    resultaat = []
+    for i in l:
+        resultaat.append(i**2)
+    return resultaat
+
 
 
 def differences_list(l1, l2):
-    return []
+    list_difference = []
+    for i in zip(l1, l2):
 
+            list_difference.append(l1[0]-l2[1])
+
+    return list_difference
 
 def replace_takis_mr_issaris(text):
     resultaat = text.replace("Takis", "Mr. Issaris")
     return resultaat
+
+

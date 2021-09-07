@@ -1,6 +1,5 @@
 # Your exercises should appear in this file.
 
-
 def list_search(l, value):
 
     """Return the index of the value in the list"""
