@@ -63,12 +63,17 @@ def squared_list(l):
 
 
 def differences_list(l1, l2):
-    list_difference = []
-    for i in zip(l1, l2):
+    lijst = []
+    length = len(l1)
+    length2 = len(l2)
 
-            list_difference.append(l1[0]-l2[1])
+    if length != length2:
+        raise ValueError
 
-    return list_difference
+    for i in range(0, length, 1):
+        item = l1[0+i] - l2[0+i]
+        lijst.append(item)
+    return lijst
 
 def replace_takis_mr_issaris(text):
     resultaat = text.replace("Takis", "Mr. Issaris")
