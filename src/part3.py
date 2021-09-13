@@ -74,4 +74,13 @@ def phonebook_print(phonebook, search_name):
     search_name: de naam van de te zoeken persoon
     """
 
-    print("not implemented")
+    found = False
+
+    for i, j in phonebook:
+        if i == search_name:
+            print(j)
+            found = True
+
+    if found == False:
+        print("niets gevonden")
+

@@ -5,6 +5,7 @@
 
 
 def addressbook_search(addressbook, search_name):
+
     """Return het adres van de gevraagde persoon
 
     Als de persoon niet in het adresboek staat, geef dan None terug.
