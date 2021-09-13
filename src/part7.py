@@ -20,17 +20,15 @@ def write_numbers(filename):
     ...
     99
     """
-
-    while a < 100:
-        a = a + 1
     bestand = open(filename, "wt")
-    bestand.write("a")
-    bestand.close()
+    for i in range(100):
+        bestand.write(f"{i}\n")
 
     return bestand
 
 
 def write_numbers_and_squares(filename):
+
     """Schrijf de getallen gevolgd door de kwadraten naar het bestand filename.
 
     Schrijf ieder getal en kwadraat ervan gescheiden door een komma op een aparte regel.
@@ -43,10 +41,16 @@ def write_numbers_and_squares(filename):
     4,16
     ...
     """
-    return None
+
+    bestand = open(filename, "wt")
+    for i in range(100):
+        bestand.write(f"{i},{i**2}\n")
+
+    return bestand
 
 
 def sum_numbers_from_file(filename):
+
     """Geef de som terug van alle getallen in bestand met naam filename
 
     De getallen staan allen op aparte regels.
@@ -60,10 +64,22 @@ def sum_numbers_from_file(filename):
     >> v = read_numbers('getallen.txt')
     >> print(v) # toont 128
     """
-    return None
+
+    bestand = open(filename, "rt")
+    lines = bestand.readlines()
+    som = 0
+    for i in lines:
+        try:
+            i = int(i)
+        except ValueError:
+            continue
+        som += int(i)
+    bestand.close()
+    return som
 
 
 def sum_two_columns_of_numbers_from_file(filename):
+
     """Geef twee sommen terug van de twee kolommen in bestand met naam filename
 
     De getallen van alle kolommen staan allen op aparte regels. De kolommen
@@ -80,7 +96,19 @@ def sum_two_columns_of_numbers_from_file(filename):
     >> v = sum_two_columns_of_numbers_from_file('getallen.txt')
     >> print(v) # toont (27, 104)
     """
-    return None
+    bestand = open(filename, "rt")
+    lines = bestand.readlines()
+    som = 0
+    for i, j in lines:
+        try:
+            i = int(i)
+            j = int(j)
+        except ValueError:
+            continue
+        som += int(i)
+        som += int(j)
+    bestand.close()
+    return som
 
 
 def count_words_from_file(filename):
