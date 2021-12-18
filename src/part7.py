@@ -117,11 +117,10 @@ def count_words_from_file(filename):
 
 
 def count_word_frequency_from_file(filename):
-    """Geef een dictionary terug met per woord het aantal keer dat het woord voorkomt
 
+    """Geef een dictionary terug met per woord het aantal keer dat het woord voorkomt
     Bijvoorbeeld voor een bestand met inhoud:
     Ik drink veel koffie en veel bruiswater. En veel koffie. En ook koffie.
-
     {
         "ik": 1,
         "en": 3,
@@ -130,10 +129,29 @@ def count_word_frequency_from_file(filename):
         "veel": 3,
         ...
     }
-
     Tips:
     - maak alle woorden lowercase
     - verwijder alle leestekens, zeker ",.?"
     - verwijder de newlines '\\n' mbv de method strip()
     """
-    return None
+
+    bestand = open(filename, "rt")
+    lines = bestand.readlines()
+    dicte = {}
+
+    for line in lines:
+        line = line.replace(",", "")
+        line = line.replace("?", "")
+        line = line.replace(".", "")
+        line = line.lower()
+        line = line.strip()
+        words = line.split()
+
+        for i in words:
+            if i in dicte:
+                dicte[i] += 1
+            else:
+                dicte[i] = 1
+
+    bestand.close()
+    return dicte

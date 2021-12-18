@@ -20,7 +20,7 @@ def test_book_chapter():
 
 
 def test_book_chapters():
-    b = Book(title="GIP")
+    b = book(title="GIP")
     b.add_chapter("Introductie")
     b.add_chapter("Werkwijze")
     b.add_chapter("Conclusie")
