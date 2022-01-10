@@ -2,6 +2,7 @@
 from .part_testing import bmi, maximum, pythagoras
 
 def test_maximum():
+    pass
 
 def test_maximum():
     m = maximum(1, 2)
