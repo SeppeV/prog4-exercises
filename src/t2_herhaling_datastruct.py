@@ -1,3 +1,4 @@
+import  statistics
 
 def maak_videokaart_dict(merk, naam, architectuur, geheugen, busbreedte, diesize, jaar):
 
@@ -95,7 +96,7 @@ def grootste_videokaartgrootte_per_merk(lijst_videokaarten):
 
     teller_AMD = 0
     teller_NVIDIA = 0
-    grootste = 0
+
 
     for videokaart in lijst_videokaarten:
         merk = videokaart["merk"]
@@ -125,8 +126,22 @@ def diesizes_videokaarten(lijst_videokaarten):
     [421, 320]
     """
 
+    videokaarten = []
+
+    for videokaart in lijst_videokaarten:
+        diesize = videokaart["diesize"]
+        videokaarten.append(diesize)
+
+    return videokaarten
+
+
+
+
+
+
 
 def gemiddelde_diesize_videokaarten(lijst_videokaarten):
+
     """Gegeven een lijst van dictionaries met informatie over videokaarten,
     geef je de gemiddelde diesize terug.
 
@@ -135,8 +150,16 @@ def gemiddelde_diesize_videokaarten(lijst_videokaarten):
     400
     """
 
+    lijst = diesizes_videokaarten(lijst_videokaarten)
+
+    return statistics.mean(lijst)
+
+
+
+
 
 def jaren_videokaarten(lijst_videokaarten):
+
     """Gegeven een lijst van dictionaries met informatie over videokaarten,
     geef je een lijst van jaartalen terug waarin de videokaarten uitgebracht werden.
 
@@ -145,8 +168,17 @@ def jaren_videokaarten(lijst_videokaarten):
     [2020, 2020]
     """
 
+    jaartallen = []
+
+    for videokaart in lijst_videokaarten:
+        jaartal = videokaart["jaar"]
+        jaartallen.append(jaartal)
+
+    return jaartallen
+
 
 def videokaarten_voor_jaar(lijst_videokaarten, jaar):
+
     """Gegeven een lijst van dictionaries met informatie over videokaarten,
     geef je een lijst van dictionaries terug met informatie over videokaarten
     voor het opgegeven jaar.
@@ -155,3 +187,12 @@ def videokaarten_voor_jaar(lijst_videokaarten, jaar):
     >>> videokaarten_voor_jaar([{"jaar": 2020, "diesize": 500}, {"jaar": 2021, "diesize": 300}], 2020)
     [{"jaar": 2020, "diesize": 500}]
     """
+
+    gegevens = []
+
+    for videokaart in lijst_videokaarten:
+        jaartal = videokaart["jaar"]
+        if jaar == jaartal:
+            gegevens.append(videokaart)
+
+    return gegevens
