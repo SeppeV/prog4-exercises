@@ -6,14 +6,27 @@ from rich import print
 
 
 def choose_word(words):
+
     """Een functie die een willekeurig woord uit een lijst kiest"""
 
 
+    lijst = random.choice(words)
+
+    return lijst
+
 def lines_to_words(lines):
+
     """Een functie die de newlines uit een lijst strings verwijdert"""
 
+    list = []
+
+    for i in lines:
+        list.append(i.strip())
+
+    return list
 
 def process_words(words, length):
+
     """Een functie die gegeven een lijst woorden de bruikbare woorden filtert
     
     De bruikbare woorden zijn:
@@ -21,8 +34,32 @@ def process_words(words, length):
     - woorden zonder: koppeltekens, spaties, hoofdletters, punten, quotes
     """
 
+    list = []
+
+    for word in words:
+        if len(word) == length:
+
+            if "-" in word:
+                continue
+
+            elif " " in word:
+                continue
+
+            elif "." in word:
+                continue
+
+            elif """'""" in word:
+                continue
+
+            elif word[0].istitle() == True:
+                continue
+
+            else:
+                list.append(word)
+    return list
 
 def combine_letters_of_words(word1, word2):
+
     """Een functie die gegeven twee woorden een lijst van tuppels geeft.
     
     Bijvoorbeeld:
@@ -33,20 +70,38 @@ def combine_letters_of_words(word1, word2):
     van Python vindt.
     """
 
+    result = zip(word1, word2)
+    lijst = list(result)
+    return lijst
+
 
 def print_letter_volledig_juist(a):
+
     """Geef een string terug die de letter 'a' in het groen weer zou geven bij gebruik van Rich"""
+
+    result = f"[green]{a}[/green]"
+
+    return result
 
 
 def print_letter_bijna_juist(a):
+
     """Geef een string terug die de letter 'a' in het geel weer zou geven bij gebruik van Rich"""
 
+    result = f"[yellow]{a}[/yellow]"
+
+    return result
 
 def print_letter_fout(a):
+
     """Geef een string terug die de letter 'a' in het rood weer zou geven bij gebruik van Rich"""
 
+    result = f"[red]{a}[/red]"
+
+    return result
 
 def print_letter(a, b, secret_word):
+
     """Geef een string terug die de letter 'a' in kleur weergeeft bij gebruik van Rich
     
     Als de letters overeenkomen, in het groen.
@@ -62,6 +117,21 @@ def print_letter(a, b, secret_word):
     >>> print_letter("o", "u", "mus")
     '[red]o[/red]'
     """
+
+    if a == b:
+        result = f"[green]{a}[/green]"
+        return result
+
+    if a != b:
+        if a == secret_word:
+            a = zip(a, b)
+            result1 = f"[yellow]{a}[/yellow]"
+            return result1
+
+    if a != b:
+        result = f"[red]{a}[/red]"
+        return result
+
 
 if __name__ == "__main__":
 
@@ -87,25 +157,26 @@ if __name__ == "__main__":
 
         # als de gebruiker "stop" ingeeft beeindig het programma dan
         # gebruik hiervoor het break statement
-        if ...
+        #if ...
 
         # als het woord geen 5 letters lang is, sla dit woord dan over
         # gebruik hiervoor het continue statement
-        if ...
+        #if ...
 
         # controlleer of het woord correct is, en druk het woord in kleur
         # op het scherm af gebruik makend van combine_letters_of_words en
         # print_letter
-        for a, b in ...
-            letter = ...
-            print(letter, end="")
-        print()
-        counter += 1
+        #for a, b in ...
+            #letter = ...
+            #print(letter, end="")
+        #print()
+        #counter += 1
 
         # als het woord correct geraden werd
         # toon dan een overwinningsboodschap
-        if ...
+        #if ...
 
     # toon hoeveel pogingen nodig waren om het woord juist te raden
     ...
+
 
