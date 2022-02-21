@@ -2,14 +2,19 @@ import random
 
 
 def map_to_pixel(x, y, tile_size=22):
+
     """Converteer map posities naar pixel posities
 
     Deze functie vergemakkelijkt het tekenen van het bord.
     """
 
+    coördinaten = (x * tile_size, y * tile_size)
+
+    return coördinaten
 
 class Board:
     def __init__(self, width, height):
+
         """Slaat breedte en hoogte van het bord op en maakt de datastructuur voor het bord in property "data"
 
         De property data bestaat uit een lijst van lijsten, met een lijst per rij van het
@@ -20,25 +25,61 @@ class Board:
         aanmaken van de datastructuur ieder element op -1 gezet.
         """
 
+        self.width = width
+        self.height = height
+        self.data = []
+
+        for i in range(self.height):
+            self.data.append([-1] * self.width)
+
     def out_of_left_border(self, player_x):
+
         """Controlleer dat positie player_x niet links van het bord ligt
 
         Geef True terug als player_x links van het bord ligt, anders False.
         """
 
+        if player_x < 0:
+            return True
+
+        else:
+            return False
+
     def out_of_top_border(self, player_y):
+
         """Controlleer dat positie player_y niet boven het bord ligt
 
         Geef True terug als player_y boven van het bord ligt, anders False.
         """
 
+        if player_y < 0:
+            return True
+
+        else:
+            return False
+
     def out_of_right_border(self, shape, player_x):
+
         """Controlleer dat de vorm shape op positie player_x niet rechtsbuiten het bord ligt"""
 
+        if player_x + len(shape[0]) > self.width:
+            return True
+
+        else:
+            return False
+
     def out_of_bottom_border(self, shape, player_y):
+
         """Controlleer dat de vorm shape op positie player_y niet onder het bord ligt"""
 
+        if player_y + len(shape) > self.height:
+            return True
+
+        else:
+            return False
+
     def out_of_border(self, shape, player_x, player_y):
+
         """Controlleer dat de vorm shape op positie player_x, player_y niet buiten het bord ligt
 
         Gebruik hiervoor de eerder gemaakte out_of_left_border, out_of_top_border, out_of_right_border
@@ -46,6 +87,25 @@ class Board:
 
         Geef True terug als de shape buiten het bord ligt, anders False.
         """
+
+        right = self.out_of_right_border(shape, player_x)
+        left = self.out_of_left_border(player_x)
+        bottom = self.out_of_bottom_border(shape, player_y)
+        top = self.out_of_top_border(player_y)
+
+        if left == True:
+            return True
+
+        if right == True:
+            return True
+
+        if top == True:
+            return True
+
+        if bottom == True:
+            return True
+
+        return False
 
     def check_collision(self, shape, player_x, player_y):
         """Controlleer of de vorm 'shape' op positie player_x, player_y overlapt met bestaande blokken.
